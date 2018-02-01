@@ -46,7 +46,7 @@ class UserSettingsForm(forms.ModelForm):
         model = Settings
         fields = ['dashboard_refresh_rate']
 
-class UserSignupForm(UserSignupForm):
+class UserSignupForm(UserCreationForm):
     class Meta:
         fields = ['email', 'username', 'password1', 'password2']
         model = get_user_model()
