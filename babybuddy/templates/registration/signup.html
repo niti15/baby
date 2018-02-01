@@ -8,15 +8,15 @@
 
         <input type="hidden" name="next" value="{{ next }}">
 
-         <label class="sr-only" for="username-input-group">
+      <!--    <label class="sr-only" for="username-input-group">
             {{ form.email.label }}
         </label>
         <div class="input-group mb-3 fade-in">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="icon icon-user" aria-hidden="true"></i></span>
+                <span class="input-group-text"><i class="icon icon-email" aria-hidden="true"></i></span>
             </div>
             {% render_field form.email name='email' class+='form-control' id='email-input-group' placeholder=form.email.label %}
-        </div>
+        </div> -->
 
         <label class="sr-only" for="username-input-group">
             {{ form.username.label }}
@@ -38,13 +38,13 @@
             {% render_field form.password name='password' class+='form-control' id='password-input-group' placeholder=form.password.label %}
         </div>
 
-        <button class="btn btn-primary w-100 fade-in" type="submit" name="login">
-            Login
+        <button class="btn btn-primary w-100 fade-in" type="submit" name="signup">
+            Signup
         </button>
     </form>
 
     <div class="bg-faded text-center px-4 py-3 rounded-bottom">
-        <a href="{% url 'babybuddy:password_reset' %}" name="reset">
-            Forgot your password?</a>
+        <a href="{% url 'babybuddy:login' %}" name="reset">
+            Already Have the account?</a>
     </div>
 {% endblock %}
