@@ -19,7 +19,11 @@ from django_filters.views import FilterView
 from babybuddy import forms
 from babybuddy.mixins import StaffOnlyMixin
 from core import models
+from django.contrib.auth import get_user_model
+from .forms import UserSignupForm
 
+
+User = get_user_model()
 
 class RootRouter(LoginRequiredMixin, RedirectView):
     """
@@ -161,7 +165,17 @@ class Signup(TemplateView):
     Basic introduction to Baby Buddy (meant to be shown when no data is in the
     database).
     """
-    form_class = forms.UserSignupForm
+    form_class = UserSignupForm
+    success_url = "/login"
     template_name = 'registration/signup.html'
+
+    def form_valid(self):
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
+        email = form.cleaned_data.get("email")        
+        new_user = User.objects.create(username=username, emai=email, password= password)
+        new_user.set_password(password)
+        new_user.save()
+        return super(signUp, self).form_valid(form)
 
 
