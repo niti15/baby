@@ -1,52 +1,21 @@
-{% extends "registration/base.html" %}
-{% load static widget_tweaks %}
+{% extends 'base.html' %}
 
-{% block title %}Register{% endblock %}
 {% block content %}
-    <form class="login-form" method="post" action="{% url 'babybuddy:signup' %}">
-        {% csrf_token %}
-
-        <input type="hidden" name="next" value="{{ next }}">
-
-         <label class="sr-only" for="username-input-group">
-            {{ field.email.label }}
-        </label>
-        <div class="input-group mb-3 fade-in">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="icon icon-email" aria-hidden="true"></i></span>
-            </div>
-           {{ form.username.label_tag }}
-            <!-- {% render_field field.email name='email' class+='form-control' id='email-input-group' placeholder=field.email.label %}
-        </div> -->
-
-        <label class="sr-only" for="username-input-group">
-            {{ form.password.label_tag }}
-        </label>
-        <div class="input-group mb-3 fade-in">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="icon icon-user" aria-hidden="true"></i></span>
-            </div>
-           <!--  {% render_field field.username name='username' class+='form-control' id='username-input-group' placeholder=field.username.label %} -->
-           {{ form.password }}
-        </div>
-
-       <!--  <label class="sr-only" for="password-input-group">
-            {{ form.password.label }}
-        </label>
-        <div class="input-group mb-3 fade-in">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="icon icon-lock" aria-hidden="true"></i></span>
-            </div>
-            {% render_field form.password name='password' class+='form-control' id='password-input-group' placeholder=form.password.label %}
-        </div> -->
-
-        <button class="btn btn-primary w-100 fade-in" type="submit" name="signup">
-            Signup
-        </button>
-    </form>
-
-    <div class="bg-faded text-center px-4 py-3 rounded-bottom">
-        <a href="{% url 'babybuddy:login' %}" name="reset">
-            Already Have the account?</a>
-    </div>
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
 {% endblock %}

@@ -47,10 +47,10 @@ class UserSettingsForm(forms.ModelForm):
         fields = ['dashboard_refresh_rate']
 
 class UserSignupForm(UserCreationForm):
-    username = forms.CharField(label="Username", max_length=30, 
-                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username', 'placeholder':'username'}))
-    password = forms.CharField(label="Password", max_length=30, 
-                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'password', 'placeholder':'Password'}))
+    first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
     class Meta:
-        fields = ['username', 'password']
-        model = get_user_model()
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
