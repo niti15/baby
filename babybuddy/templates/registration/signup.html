@@ -1,9 +1,9 @@
-{% extends "registration/base.html" %}
+<!-- {% extends "registration/base.html" %}
 {% load static widget_tweaks %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Login{% endblock %}
 {% block content %}
-   <!--  <form class="login-form" method="post" action="{% url 'babybuddy:signup' %}">
+    <form class="login-form" method="post" action="{% url 'babybuddy:login' %}">
         {% csrf_token %}
 
         <input type="hidden" name="next" value="{{ next }}">
@@ -46,10 +46,16 @@
     <div class="bg-faded text-center px-4 py-3 rounded-bottom">
         <a href="{% url 'babybuddy:login' %}" name="reset">
             Already Have the account?</a>
-    </div> -->
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+    </div>
+{% endblock %} -->
+
+{% bootstrap4 %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<form method="POST">
+  
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <input type="submit" name="Signup" value="signup" >
+</form>
 {% endblock %}

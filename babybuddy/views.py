@@ -13,7 +13,6 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import View
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.shortcuts import render
 
 from django_filters.views import FilterView
 
@@ -21,23 +20,6 @@ from babybuddy import forms
 from babybuddy.mixins import StaffOnlyMixin
 from core import models
 
-
-from django.http import HttpResponseRedirect    
-from django.contrib import auth                 
-from django.core.context_processors import csrf 
-from forms import UserSignupForm
-
-def register_user(request):
-    if request.method == 'POST':
-        form = UserSignupForm(request.POST)     # create form object
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('babybuddy/login')
-    args = {}
-    args.update(csrf(request))
-    args['form'] = UserSignupForm()
-    print args
-    return render(request, 'babybuddy/signup.html', args)
 
 class RootRouter(LoginRequiredMixin, RedirectView):
     """
@@ -179,5 +161,6 @@ class Signup(TemplateView):
     Basic introduction to Baby Buddy (meant to be shown when no data is in the
     database).
     """
-    form_class = forms.UserSignupForm
+    form_class = forms.UserSignupdForm
+    success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'

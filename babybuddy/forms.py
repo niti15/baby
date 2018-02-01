@@ -47,28 +47,10 @@ class UserSettingsForm(forms.ModelForm):
         fields = ['dashboard_refresh_rate']
 
 class UserSignupForm(UserCreationForm):
-    email = forms.EmailField(required = True)
-    first_name = forms.CharField(required = False)
-    last_name = forms.CharField(required = False)
-    birtday = forms.DateField(required = False)
+    username = forms.CharField(label="Username", max_length=30, 
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username', 'placeholder':'username'}))
+    password = forms.CharField(label="Password", max_length=30, 
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'password', 'placeholder':'Password'}))
     class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')        
-
-    def save(self,commit = True):   
-        user = super(MyRegistrationForm, self).save(commit = False)
-        user.email = self.cleaned_data['email']
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last name']
-        user.birthday = self.cleaned_data['birthday']
-         if commit:
-            user.save()
-
-        return user
-    # first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    # last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    # email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-
-    # class Meta:
-    #     model = User
-    #     fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+        fields = ['email', 'username']
+        model = get_user_model()
