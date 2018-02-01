@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django import forms
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import get_user_model
 
 from .models import Settings
 
@@ -44,3 +45,10 @@ class UserSettingsForm(forms.ModelForm):
     class Meta:
         model = Settings
         fields = ['dashboard_refresh_rate']
+
+class UserSignupForm(UserCreationForm):
+
+    class Meta:
+        model = get_user_model()
+        fields = ['email', 'username', 'password']
+        
