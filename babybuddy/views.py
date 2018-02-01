@@ -22,6 +22,23 @@ from babybuddy.mixins import StaffOnlyMixin
 from core import models
 
 
+from django.http import HttpResponseRedirect    
+from django.contrib import auth                 
+from django.core.context_processors import csrf 
+from forms import UserSignupForm
+
+def register_user(request):
+    if request.method == 'POST':
+        form = UserSignupForm(request.POST)     # create form object
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('babybuddy/login')
+    args = {}
+    args.update(csrf(request))
+    args['form'] = UserSignupForm()
+    print args
+    return render(request, 'babybuddy/signup.html', args)
+
 class RootRouter(LoginRequiredMixin, RedirectView):
     """
     Redirects to the welcome page if no children are in the database, a child
