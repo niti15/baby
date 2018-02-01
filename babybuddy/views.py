@@ -162,5 +162,4 @@ class Signup(TemplateView):
     database).
     """
     form_class = forms.UserSignupdForm
-    success_url = reverse_lazy('login')
-    template_name = 'registration/signup.html'
+    template_name = 'babybuddy/signup.html'
