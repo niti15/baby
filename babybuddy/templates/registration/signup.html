@@ -1,4 +1,4 @@
-<!-- {% extends "registration/base.html" %}
+{% extends "registration/base.html" %}
 {% load static widget_tweaks %}
 
 {% block title %}Login{% endblock %}
@@ -15,7 +15,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon icon-email" aria-hidden="true"></i></span>
             </div>
-            {% render_field form.email name='email' class+='form-control' id='email-input-group' placeholder=form.email.label %}
+           <!--  {% render_field form.email name='email' class+='form-control' id='email-input-group' placeholder=form.email.label %} -->
+           <input type="text" class="form-control" id="email-input-group" name="email"/>
         </div>
 
         <label class="sr-only" for="username-input-group">
@@ -25,7 +26,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon icon-user" aria-hidden="true"></i></span>
             </div>
-            {% render_field form.username name='username' class+='form-control' id='username-input-group' placeholder=form.username.label %}
+             <input type="text" class="form-control" id="username-input-group" name="username"/>
+            <!-- {% render_field form.username name='username' class+='form-control' id='username-input-group' placeholder=form.username.label %} -->
         </div>
 
         <label class="sr-only" for="password-input-group">
@@ -35,7 +37,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon icon-lock" aria-hidden="true"></i></span>
             </div>
-            {% render_field form.password name='password' class+='form-control' id='password-input-group' placeholder=form.password.label %}
+           <!--  {% render_field form.password name='password' class+='form-control' id='password-input-group' placeholder=form.password.label %} -->
+             <input type="password" class="form-control" id="password-input-group" name="password"/>
         </div>
 
         <button class="btn btn-primary w-100 fade-in" type="submit" name="signup">
@@ -47,15 +50,4 @@
         <a href="{% url 'babybuddy:login' %}" name="reset">
             Already Have the account?</a>
     </div>
-{% endblock %} -->
-
-{% load bootstrap4 %}
-{% block title %}Login{% endblock %}
-{% block content %}
-<form method="POST">
-  
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  <input type="submit" name="Signup" value="signup" >
-</form>
 {% endblock %}
