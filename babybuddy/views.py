@@ -155,3 +155,10 @@ class Welcome(LoginRequiredMixin, TemplateView):
     database).
     """
     template_name = 'babybuddy/welcome.html'
+
+class Signup(TemplateView):
+    """
+    Basic introduction to Baby Buddy (meant to be shown when no data is in the
+    database).
+    """
+    template_name = 'registration/signup.html'
