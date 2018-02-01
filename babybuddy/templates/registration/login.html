@@ -32,9 +32,13 @@
             Login
         </button>
     </form>
-
+    <div class="bg-faded text-center px-4 py-3 rounded-bottom">
+        <a href="{% url 'babybuddy:signup' %}" name="reset">
+            Don't you have a account?</a>
+    </div>
     <div class="bg-faded text-center px-4 py-3 rounded-bottom">
         <a href="{% url 'babybuddy:password_reset' %}" name="reset">
             Forgot your password?</a>
     </div>
+
 {% endblock %}
