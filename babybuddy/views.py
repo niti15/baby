@@ -13,6 +13,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import View
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.shortcuts import render
 
 from django_filters.views import FilterView
 
@@ -161,4 +162,5 @@ class Signup(TemplateView):
     Basic introduction to Baby Buddy (meant to be shown when no data is in the
     database).
     """
+    form_class = forms.UserSignupForm
     template_name = 'registration/signup.html'
