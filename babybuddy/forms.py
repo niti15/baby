@@ -48,5 +48,5 @@ class UserSettingsForm(forms.ModelForm):
 
 class UserSignupForm(UserCreationForm):
     class Meta:
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ['email', 'username']
         model = get_user_model()
