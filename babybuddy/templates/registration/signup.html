@@ -3,7 +3,32 @@
 
 {% block title %}Register{% endblock %}
 {% block content %}
-    <form class="login-form" method="post" action="{% url 'babybuddy:signup' %}">
+  <form method="post">
+    {% csrf_token %}
+    <!-- {{ form.as_p }} -->
+  
+    {% for field in form %}
+      <p>
+        
+        <!-- {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %} -->
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+   <p><label>Username</label> {{form.username}}</p>
+    <p><label>Email</label> {{form.email}}</p>
+     <p><label>password</label> {{form.password1}}</p>
+     <p><label>Confirm password</label> {{form.password2}}</p>
+       <p><label>FirstName</label> {{form.first_name}}</p>
+        <p><label>LastName</label> {{form.last_name}}</p>
+   
+    <input type="submit" name="submit" value="submit">
+  </form>
+  <!--   <form class="login-form" method="post" action="{% url 'babybuddy:signup' %}">
         {% csrf_token %}
 
         <input type="hidden" name="next" value="{{ next }}">
@@ -16,7 +41,7 @@
                 <span class="input-group-text"><i class="icon icon-user" aria-hidden="true"></i></span>
             </div>
             <input type="text" name="email" id="email-input-group" placeholder="email" class="form-control" />
-<!--             {% render_field form.email name='email' class+='form-control' id='email-input-group' placeholder=form.email.label %} -->
+
         </div>
 
         <label class="sr-only" for="username-input-group">
@@ -27,8 +52,7 @@
                 <span class="input-group-text"><i class="icon icon-user" aria-hidden="true"></i></span>
             </div>
              <input type="text" name="username" id="username-input-group" placeholder="Username" class="form-control" />
-           <!--  {% render_field form.username name='username' class+='form-control' id='username-input-group' placeholder=form.username.label %} -->
-        </div>
+          </div>
 
         <label class="sr-only" for="password-input-group">
             {{ form.password.label }}
@@ -38,7 +62,7 @@
                 <span class="input-group-text"><i class="icon icon-lock" aria-hidden="true"></i></span>
             </div>
              <input type="password" name="password" id="password-input-group" placeholder="Password" class="form-control" />
-           <!--  {% render_field form.password name='password' class+='form-control' id='password-input-group' placeholder=form.password.label %} -->
+          
         </div>
 
         <button class="btn btn-primary w-100 fade-in" type="submit" name="signup">
@@ -49,5 +73,5 @@
     <div class="bg-faded text-center px-4 py-3 rounded-bottom">
         <a href="{% url 'babybuddy:login' %}" name="reset">
             Already Have the account?</a>
-    </div>
+    </div> -->
 {% endblock %}
