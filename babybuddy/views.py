@@ -26,7 +26,7 @@ from django.contrib.auth import get_user_model
 def register(request):
 
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = forms.SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             # username = form.cleaned_data.get('username')
@@ -35,9 +35,9 @@ def register(request):
           
             return redirect('login')
     else:
-        form = SignUpForm()
+        form = forms.SignUpForm()
 
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
 
 class RootRouter(LoginRequiredMixin, RedirectView):
     """
@@ -179,7 +179,7 @@ class Signup(TemplateView):
     Basic introduction to Baby Buddy (meant to be shown when no data is in the
     database).
     """
-    form_class = UserSignupForm
+    form_class = forms.UserSignupForm
     success_url = "/login"
     template_name = 'registration/signup.html'
 
