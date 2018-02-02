@@ -33,7 +33,7 @@ def register(request):
             # raw_password = form.cleaned_data.get('password1')
             # user = authenticate(username=username, password=raw_password)
           
-            return redirect('login')
+            return redirect('babybuddy:login')
     else:
         form = forms.SignUpForm()
 
