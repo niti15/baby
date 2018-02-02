@@ -20,7 +20,7 @@ from babybuddy import forms
 from babybuddy.mixins import StaffOnlyMixin
 from core import models
 from django.contrib.auth import get_user_model
-from forms import SignUpForm
+
 
 
 def register(request):
