@@ -63,6 +63,16 @@
               {% render_field form.password1  class+='form-control' placeholder+='Enter the Password' %}
           
         </div>
+          <label class="sr-only" for="password-input-group">
+            Confirm Password
+        </label>
+        <div class="input-group mb-3 fade-in">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon icon-lock" aria-hidden="true"></i></span>
+            </div>
+              {% render_field form.password2  class+='form-control' placeholder+='Enter the Password again to confirm' %}
+          
+        </div>
 
         <button class="btn btn-primary w-100 fade-in" type="submit" name="signup">
             Signup
