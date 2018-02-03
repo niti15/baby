@@ -5,7 +5,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm
 from django.urls import include, path
 
 from . import views
@@ -15,10 +14,10 @@ app_patterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.register, name='register'),
 
-    path('reset-password/',password_reset,name='reset_password'),
-    path('reset-password/done/',password_reset_done,name='password_reset_done'),
+    path('reset-password/',auth_views.password_reset,name='reset_password'),
+    path('reset-password/done/',auth_views.password_reset_done,name='password_reset_done'),
     path('reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/',
-    password_reset_confirm, name='password_reset_confirm'),
+    auth_views.password_reset_confirm, name='password_reset_confirm'),
     
 
     path('', views.RootRouter.as_view(), name='root-router'),
