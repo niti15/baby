@@ -8,18 +8,18 @@
     <!-- {{ form.as_p }} -->
   
     {% for field in form %}
-      <p>
+      
         
         <!-- {{ field }}
         {% if field.help_text %}
           <small style="color: grey">{{ field.help_text }}</small>
         {% endif %} -->
-        <!-- {% for error in field.errors %}
+         {% for error in field.errors %}
           <p style="color: red">{{ error }}</p>
         {% endfor %}
-      </p>
+   
     {% endfor %}
-   <p><label>Username</label> {{form.username}}</p>
+   <!--<p><label>Username</label> {{form.username}}</p>
     <p><label>Email</label> {{form.email}}</p>
      <p><label>password</label> {{form.password1}}</p>
      <p><label>Confirm password</label> {{form.password2}}</p>
@@ -50,11 +50,11 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon icon-user" aria-hidden="true"></i></span>
             </div>
-              {% render_field form.email  class+='form-control' placeholder+='Enter the Username' %}
+              {% render_field form.email  class+='form-control' placeholder+='Enter the Email' %}
           </div>
 
         <label class="sr-only" for="password-input-group">
-            {{ form.password1.label }}
+            Password
         </label>
         <div class="input-group mb-3 fade-in">
             <div class="input-group-prepend">
