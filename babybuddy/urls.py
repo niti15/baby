@@ -13,13 +13,12 @@ app_patterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.register, name='register'),
-
-    path('reset-password/',auth_views.password_reset,name='reset_password'),
-    path('reset-password/done/',auth_views.password_reset_done,name='password_reset_done'),
-    path('reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/',
-    auth_views.password_reset_confirm, name='password_reset_confirm'),
+    path(
+        'password_reset/',
+        auth_views.PasswordResetView.as_view(),
+        name='password_reset'
+    ),
     
-
     path('', views.RootRouter.as_view(), name='root-router'),
     path('welcome/', views.Welcome.as_view(), name='welcome'),
 
