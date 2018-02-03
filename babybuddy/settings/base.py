@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'easy_thumbnails',
 
-    'django.contrib.admin',
+   
     'django.contrib.auth',
+     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
