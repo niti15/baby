@@ -34,33 +34,33 @@
         <input type="hidden" name="next" value="{{ next }}">
 
          <label class="sr-only" for="username-input-group">
-           Email
+           Username
         </label>
         <div class="input-group mb-3 fade-in">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon icon-user" aria-hidden="true"></i></span>
             </div>
-             {% render_field form.username  class+='form-control'  %}
+             {% render_field form.username  class+='form-control' placeholder+='Enter the Username' %}
         </div>
 
         <label class="sr-only" for="username-input-group">
-            {{ form.username.label }}
+            Email
         </label>
         <div class="input-group mb-3 fade-in">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon icon-user" aria-hidden="true"></i></span>
             </div>
-             <input type="text" name="username" id="username-input-group" placeholder="Username" class="form-control" />
+              {% render_field form.email  class+='form-control' placeholder+='Enter the Username' %}
           </div>
 
         <label class="sr-only" for="password-input-group">
-            {{ form.password.label }}
+            {{ form.password1.label }}
         </label>
         <div class="input-group mb-3 fade-in">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="icon icon-lock" aria-hidden="true"></i></span>
             </div>
-             <input type="password" name="password" id="password-input-group" placeholder="Password" class="form-control" />
+              {% render_field form.password1  class+='form-control' placeholder+='Enter the Password' %}
           
         </div>
 
