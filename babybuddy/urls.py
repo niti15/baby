@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm
 from django.urls import include, path
 
 from . import views
@@ -14,10 +15,11 @@ app_patterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.register, name='register'),
 
-    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('reset-password/',password_reset,name='reset_password'),
+    path('reset-password/done/',password_reset_done,name='password_reset_done'),
+    path('reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/',
+    password_reset_confirm, name='password_reset_confirm'),
+    
 
     path('', views.RootRouter.as_view(), name='root-router'),
     path('welcome/', views.Welcome.as_view(), name='welcome'),
