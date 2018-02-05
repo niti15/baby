@@ -16,8 +16,8 @@
         {% endfor %}
    
     {% endfor %}
-    
-    <form class="login-form" method="post" action="{% url 'babybuddy:login' %}">
+
+    <form class="login-form" method="post" >
         {% csrf_token %}
 
         <input type="hidden" name="next" value="{{ next }}">
