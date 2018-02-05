@@ -30,9 +30,11 @@ def register(request):
         form = forms.SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            # username = form.cleaned_data.get('username')
-            # raw_password = form.cleaned_data.get('password1')
-            # user = authenticate(username=username, password=raw_password)
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            #return redirect('home')
             #update_session_auth_hash(request, form.user)
             return redirect('babybuddy:welcome')
     else:
