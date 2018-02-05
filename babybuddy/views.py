@@ -20,6 +20,7 @@ from babybuddy import forms
 from babybuddy.mixins import StaffOnlyMixin
 from core import models
 from django.contrib.auth import get_user_model
+#from django.contrib.auth import update_session_auth_hash
 
 
 
@@ -32,8 +33,8 @@ def register(request):
             # username = form.cleaned_data.get('username')
             # raw_password = form.cleaned_data.get('password1')
             # user = authenticate(username=username, password=raw_password)
-          
-            return redirect('babybuddy:login')
+            #update_session_auth_hash(request, form.user)
+            return redirect('babybuddy:welcome')
     else:
         form = forms.SignUpForm()
 
